@@ -3,6 +3,7 @@ package pk;
 import java.util.logging.Logger;
 import java.util.*;
 class Validate{
+    static Scanner sc = new Scanner(System.in);
     static char[][] arr;
     private static final Logger LOGGER =  Logger.getLogger("InfoLogging");
     static void assign(int user,int x, int y){
@@ -94,6 +95,14 @@ class Validate{
             return 0;
         }
     }
+    static void createGrid(int dim){
+        arr = new char[dim][dim];
+        for(int i=0; i<dim; i++){
+            for(int j=0; j<dim; j++){
+                arr[i][j] = ' ';
+            }
+        }
+    }
     static int checkWin(){
         if(diagonalCheck() == 1 || verticalCheck() == 1 || horizontalCheck() == 1){
             return 1;
@@ -122,23 +131,18 @@ class Validate{
         LOGGER.info(str);
     }
 }
-public class TicTacToe extends Validate{    
-    private static final Logger LOGGER =  Logger.getLogger("InfoLogging");
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        int n = 0;
-        LOGGER.info("Enter dimensions for tic-tac-toe:");
-        int dim = sc.nextInt();
+public class TicTacToe extends Validate{ 
+    static void dimVal(int dim){
         while(dim%2==0){
             LOGGER.info("Enter an odd value: ");
             dim = sc.nextInt();
         }
-        arr = new char[dim][dim];
-        for(int i=0; i<dim; i++){
-            for(int j=0; j<dim; j++){
-                arr[i][j] = ' ';
-            }
-        }
+    }   
+    private static final Logger LOGGER =  Logger.getLogger("InfoLogging");
+    public static void main(String[] args){
+        LOGGER.info("Enter dimensions for tic-tac-toe:");
+        int dim = sc.nextInt();
+        createGrid(dim);
         int st = 0;
         do{
             if(checkDraw() == 0){
