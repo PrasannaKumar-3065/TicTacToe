@@ -4,6 +4,8 @@ import java.util.logging.Logger;
 import java.util.*;
 
 class Validate {
+    protected Validate() {
+    }
     static Scanner sc = new Scanner(System.in);
     static char[][] arr;
     private static final Logger LOGGER = Logger.getLogger("InfoLogging");
@@ -134,6 +136,9 @@ class Validate {
 }
 
 public class TicTacToe extends Validate {
+    TicTacToe(){
+        super();
+    }
     static void dimVal(int dim) {
         while (dim % 2 == 0) {
             LOGGER.info("Enter an odd value: ");
